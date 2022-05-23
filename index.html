@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Index</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css?v=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="js.js" defer></script>
+    </head>
+    <body>
+        <div id="vue">
+            <a href="init.php" v-if="devices.length==0">Táblák létrehozása</a><br><br>
+            <a href="form.php" v-if="devices.length>0">Új eszköz hozzáadása</a>
+
+            <div id="filters">
+                <select class="field" id="select_order">
+                    <option value="id ASC" selected>Rendezés: ID növekvő</option>
+                    <option value="id DESC">Rendezés: ID csökkenő</option>
+                </select>
+                <input class="field" type="text" id="search" placeholder="Eszköz keresés név alapján">
+            </div>
+
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>Worker ID</th>
+                    <th>Name</th>
+                    <th>Item condition</th>
+                    <th>Date</th>
+                </tr>
+                <tr v-for="item in devices">
+                    <td>{{item.id}}</td>
+                    <td>{{item.id_worker}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.condition}}</td>
+                    <td>{{item.date}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
